@@ -11,7 +11,8 @@ class DrawerTitle extends StatelessWidget {
       {required this.icomData, required this.title, required this.page});
   @override
   Widget build(BuildContext context) {
-    final int curPage = context.read<PageManager>().page;
+    final int curPage = context.watch<PageManager>().page;
+    final Color primaryColor = Theme.of(context).primaryColor;
     return InkWell(
       onTap: () {
         context.read<PageManager>().setPage(page);
@@ -25,7 +26,7 @@ class DrawerTitle extends StatelessWidget {
               child: Icon(
                 icomData,
                 size: 32,
-                color: curPage == page ? Colors.red : Colors.green,
+                color: curPage == page ? primaryColor : Colors.green,
               ),
             ),
             Text(

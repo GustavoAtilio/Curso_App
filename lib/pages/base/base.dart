@@ -1,4 +1,5 @@
 import 'package:curso_app/models/page_manager.dart';
+import 'package:curso_app/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,17 +16,27 @@ class BasePage extends StatelessWidget {
           controller: pageController,
           physics: const NeverScrollableScrollPhysics(),
           children: <Widget>[
+            LoginPage(),
             Scaffold(
               drawer: CustomDrawer(),
-              appBar: AppBar(title: const Text("tela 0")),
+              appBar: AppBar(
+                title: const Text("tela 0"),
+                backgroundColor: Theme.of(context).primaryColor,
+              ),
             ),
             Scaffold(
               drawer: CustomDrawer(),
-              appBar: AppBar(title: const Text("tela 1")),
+              appBar: AppBar(
+                title: const Text("tela 1"),
+                backgroundColor: Theme.of(context).primaryColor,
+              ),
             ),
             Scaffold(
               drawer: CustomDrawer(),
-              appBar: AppBar(title: const Text("tela 2")),
+              appBar: AppBar(
+                title: const Text("tela 2"),
+                backgroundColor: Theme.of(context).primaryColor,
+              ),
             ),
           ]),
     );
