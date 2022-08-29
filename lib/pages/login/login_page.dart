@@ -15,6 +15,18 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
+        actions: <Widget>[
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacementNamed("/signup");
+            },
+            textColor: Colors.white,
+            child: const Text(
+              "CRIAR CONTA",
+              style: TextStyle(fontSize: 14),
+            ),
+          )
+        ],
         title: const Text("Entrar"),
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
@@ -74,8 +86,8 @@ class LoginPage extends StatelessWidget {
                                   if (formKey.currentState!.validate()) {
                                     userManeger.signIn(
                                         user: User(
-                                          emailController.text,
-                                          passController.text,
+                                          email: emailController.text,
+                                          password: passController.text,
                                         ),
                                         onFail: (e) {
                                           scaffoldKey.currentState!

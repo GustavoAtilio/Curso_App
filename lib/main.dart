@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'models/user_manager.dart';
+import 'pages/signup/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,16 +18,28 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => UserManager(),
       child: MaterialApp(
-          title: 'Loja',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primaryColor: const Color.fromARGB(255, 4, 125, 141),
-            scaffoldBackgroundColor: const Color.fromARGB(255, 4, 125, 141),
-            appBarTheme: const AppBarTheme(
-              elevation: 0,
-            ),
+        title: 'Loja',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: const Color.fromARGB(255, 4, 125, 141),
+          scaffoldBackgroundColor: const Color.fromARGB(255, 4, 125, 141),
+          appBarTheme: const AppBarTheme(
+            elevation: 0,
           ),
-          home: BasePage()),
+        ),
+        // home: BasePage()),
+        initialRoute: '/base',
+        onGenerateRoute: ((settings) {
+          switch (settings.name) {
+            case '/base':
+              return MaterialPageRoute(builder: ((_) => BasePage()));
+            case '/signup':
+              return MaterialPageRoute(builder: ((_) => Signup()));
+            default:
+              return MaterialPageRoute(builder: ((_) => BasePage()));
+          }
+        }),
+      ),
     );
   }
 }
